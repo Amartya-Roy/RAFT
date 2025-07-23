@@ -1,0 +1,127 @@
+# PDF RAG System - Usage Commands
+
+## Prerequisites
+```bash
+# Install required dependencies
+pip install -r raft/requirements.txt
+```
+
+## Basic Usage
+
+### 1. Interactive Mode (Recommended)
+```bash
+# Start interactive Q&A session with your PDF
+python raft/pdf_rag.py --pdf_path /path/to/your/document.pdf
+```
+
+### 2. Single Question Mode
+```bash
+# Ask a specific question about the PDF
+python raft/pdf_rag.py --pdf_path /path/to/your/document.pdf --question "When was Berkeley founded?"
+```
+
+## Example Commands
+
+### For a PDF about Berkeley University:
+```bash
+# Interactive mode
+python raft/pdf_rag.py --pdf_path berkeley_history.pdf
+
+# Single questions
+python raft/pdf_rag.py --pdf_path berkeley_history.pdf --question "When was Berkeley founded?"
+python raft/pdf_rag.py --pdf_path berkeley_history.pdf --question "Who founded Berkeley?"
+python raft/pdf_rag.py --pdf_path berkeley_history.pdf --question "What is Berkeley known for?"
+```
+
+### For a technical document:
+```bash
+# Interactive mode
+python raft/pdf_rag.py --pdf_path technical_manual.pdf
+
+# Single questions
+python raft/pdf_rag.py --pdf_path technical_manual.pdf --question "What are the system requirements?"
+python raft/pdf_rag.py --pdf_path technical_manual.pdf --question "How do I install the software?"
+```
+
+### For a research paper:
+```bash
+# Interactive mode
+python raft/pdf_rag.py --pdf_path research_paper.pdf
+
+# Single questions
+python raft/pdf_rag.py --pdf_path research_paper.pdf --question "What is the main hypothesis?"
+python raft/pdf_rag.py --pdf_path research_paper.pdf --question "What are the key findings?"
+python raft/pdf_rag.py --pdf_path research_paper.pdf --question "What methodology was used?"
+```
+
+## Interactive Mode Commands
+
+When in interactive mode, you can:
+- Type any question and press Enter
+- Type 'quit', 'exit', or 'q' to exit
+- Answer 'y' when asked "Show context?" to see the relevant text chunks
+
+Example interactive session:
+```
+Your question: When was Berkeley founded?
+Answer: 1868
+Confidence: 0.932
+Show context? (y/n): y
+
+Relevant context:
+1. The University of California, Berkeley was founded in 1868 as the flagship campus...
+2. Berkeley was established following the merger of the College of California...
+```
+
+## Command Options
+
+- `--pdf_path`: (Required) Path to your PDF file
+- `--question`: (Optional) Specific question to ask. If not provided, starts interactive mode
+
+## Sample Questions You Can Ask
+
+### Historical Documents:
+- "When did this event happen?"
+- "Who were the key people involved?"
+- "What was the outcome?"
+
+### Technical Documents:
+- "How do I configure this?"
+- "What are the requirements?"
+- "What are the troubleshooting steps?"
+
+### Research Papers:
+- "What is the main conclusion?"
+- "What methodology was used?"
+- "What are the limitations?"
+
+### Business Documents:
+- "What is the budget?"
+- "When is the deadline?"
+- "Who is responsible for this task?"
+
+## Tips for Better Results
+
+1. **Be specific**: Instead of "Tell me about X", ask "When was X founded?" or "What does X do?"
+2. **Use keywords**: Include important terms from the document
+3. **Ask one thing at a time**: Break complex questions into simpler ones
+4. **Check context**: Use "Show context? y" to see what text was used for the answer
+
+## Troubleshooting
+
+### If you get an error about PDF path:
+```bash
+# Make sure the file exists and path is correct
+ls -la /path/to/your/document.pdf
+```
+
+### If you get import errors:
+```bash
+# Reinstall dependencies
+pip install --upgrade sentence-transformers PyPDF2 torch transformers
+```
+
+### If the PDF text extraction fails:
+- Make sure it's a text-based PDF (not scanned images)
+- Try a different PDF file
+- Check if the PDF is password protected

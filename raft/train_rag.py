@@ -108,7 +108,14 @@ def main():
         data_collator=data_collator,
     )
 
+    # Train the model
     trainer.train()
+    
+    # Save the final model
+    print(f"Saving model to {args.output_dir}")
+    trainer.save_model()
+    tokenizer.save_pretrained(args.output_dir)
+    print("Model saved successfully!")
 
 
 if __name__ == "__main__":
