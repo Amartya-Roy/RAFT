@@ -6,7 +6,7 @@
 pip install -r raft/requirements.txt
 ```
 
-## Basic Usage
+## Basic Usages
 
 ### 1. Interactive Mode (Recommended)
 ```bash
